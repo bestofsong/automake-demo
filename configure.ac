@@ -2,11 +2,12 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+AC_INIT([hello-world-autoconf], [1.0.0], [wansong@sina.cn])
 AC_CONFIG_SRCDIR([src/include/swap.h])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
+AC_PROG_CXX
 AC_PROG_CC
 
 # Checks for libraries.
