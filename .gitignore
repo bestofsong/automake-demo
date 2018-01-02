@@ -1,0 +1,9 @@
+*.in
+/configure
+/INSTALL
+/*.m4
+/compile
+/depcomp
+/install-sh
+/missing
+/autom4te.cache

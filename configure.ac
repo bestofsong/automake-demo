@@ -2,10 +2,10 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([hello-world-autoconf], [1.0.0], [wansong@sina.cn])
+AC_INIT([hello-autoconf], [1.0.0], [wansong@sina.cn])
 AC_CONFIG_SRCDIR([src/hello_autoconf/main.cc])
 AC_CONFIG_HEADERS([config.h])
-AM_INIT_AUTOMAKE([hello-autoconf], 1.0)
+AM_INIT_AUTOMAKE([foreign subdir-objects -Wall -Werror])
 
 # Checks for programs.
 AC_PROG_CXX
