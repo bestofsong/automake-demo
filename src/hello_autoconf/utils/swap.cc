@@ -1,8 +1,3 @@
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include <stdio.h>
 #include "swap.h"
 
@@ -13,9 +8,3 @@ void swap(int* x, int* y)
 	*x = *y;
 	*y = temp;
 }
-
-
-#ifdef __cplusplus
-}
-#endif
-

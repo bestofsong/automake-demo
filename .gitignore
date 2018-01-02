@@ -7,3 +7,12 @@
 /install-sh
 /missing
 /autom4te.cache
+/config.h
+/config.status
+*.log
+/stamp-h1
+Makefile
+/**/.deps
+/**/.dirstamp
+/**/*.o
+

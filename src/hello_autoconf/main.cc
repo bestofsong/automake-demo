@@ -1,17 +1,13 @@
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include <stdio.h>
 #include <sys/types.h>
 #include <pthread.h>
-#include "swap.h"
-#include "apple.h"
+#include <utils/swap.h>
+#include <demo/rw_lock_demo.h>
 
 void* swapapple(void* x)
 {
 	swapvec((struct number *)x);
+	return NULL;
 }
 
 void* addapple(void* x)
@@ -19,6 +15,7 @@ void* addapple(void* x)
 	int sum;
 	sum = addvec((struct number *)x);
 	printf("sum = %d\n",sum);
+	return NULL;
 }
 
 
@@ -37,7 +34,3 @@ int main()
 	printf("x = %d,y = %d\n",apple.x,apple.y);
 	return 0;
 }
-
-#ifdef __cplusplus
-}
-#endif

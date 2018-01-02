@@ -1,7 +1,3 @@
-#ifdef __cplusplus
-extern {
-#endif
-
 #include <pthread.h>
 #include <utils/swap.h>
 #include "rw_lock_demo.h"
@@ -21,7 +17,4 @@ void swapvec(struct number* num)
     swap(&num->x,&num->y);
 	pthread_rwlock_unlock(&num->rwLock);
 }
-#ifdef __cplusplus
-}
-#endif
 
