@@ -1,4 +1,0 @@
-noinst_PROGRAMS=test
-test_SOURCES=test.cc
-test_LDADD=$(top_srcdir)/src/ModuleA/apple/shell/apple.o $(top_srcdir)/src/lib/libswap.a 
-export INCLUDES

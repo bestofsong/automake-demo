@@ -1,0 +1,1 @@
+SUBDIRS=hello_autoconf

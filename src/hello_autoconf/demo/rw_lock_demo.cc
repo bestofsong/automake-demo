@@ -2,9 +2,9 @@
 extern {
 #endif
 
-#include "pthread.h"
-#include "apple.h"
-#include "swap.h"
+#include <pthread.h>
+#include <utils/swap.h>
+#include "rw_lock_demo.h"
 
 int addvec(struct number* num)
 {

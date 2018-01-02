@@ -27,7 +27,6 @@ int main()
     int x = 12 ,y = 90;
     struct number apple;
 	pthread_t ThreadA,ThreadB;
-	pthread_rwlock_t aaa;
     apple.x= x;
 	apple.y= y;
 	pthread_rwlock_init(&apple.rwLock,NULL);

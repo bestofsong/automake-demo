@@ -1,5 +1,5 @@
-#ifndef _APPLE_H
-#define _APPLE_H
+#ifndef _RW_LOCK_DEMO_H
+#define _RW_LOCK_DEMO_H
 
 #ifdef __cplusplus
 extern "C"
@@ -14,7 +14,7 @@ struct number
 };
 
 int addvec(struct number* num);
-void swqpvec(struct number* num);
+void swapvec(struct number* num);
 
 #ifdef __cplusplus
 }
