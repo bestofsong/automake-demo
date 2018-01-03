@@ -1,4 +1,4 @@
-include utils/Makefile.am
+include utils/utils.am
 
 bin_PROGRAMS=hello
 hello_SOURCES=main.cc demo/rw_lock_demo.cc
