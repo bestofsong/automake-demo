@@ -15,4 +15,4 @@ Makefile
 /**/.deps
 /**/.dirstamp
 /**/*.o
-
+/ar-lib

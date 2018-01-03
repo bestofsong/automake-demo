@@ -11,6 +11,7 @@ AM_INIT_AUTOMAKE([foreign subdir-objects -Wall -Werror])
 AC_PROG_CXX
 AC_PROG_CC
 AC_PROG_RANLIB
+AM_PROG_AR
 
 # Checks for libraries.
 AC_CHECK_LIB([pthread], [pthread_rwlock_init])
