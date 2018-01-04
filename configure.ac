@@ -26,6 +26,7 @@ AC_CONFIG_FILES([Makefile
   src/Makefile
   src/hello_autoconf/demo/Makefile
   src/hello_autoconf/utils/Makefile
-  src/hello_autoconf/Makefile])
+  src/hello_autoconf/Makefile
+  test/Makefile])
 
 AC_OUTPUT
