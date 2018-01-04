@@ -1,0 +1,2 @@
+lib_LIBRARIES=librwlockdemo.a
+librwlockdemo_a_SOURCES=rw_lock_demo.cc rw_lock_demo.h

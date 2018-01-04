@@ -1,6 +1,3 @@
-include utils/utils.am
-
-bin_PROGRAMS=hello
-hello_SOURCES=main.cc demo/rw_lock_demo.cc
-hello_LDADD=libutils.a
+SUBDIRS=utils demo
 AM_CPPFLAGS=-I$(srcdir)
+nobase_include_HEADERS=demo/rw_lock_demo.h utils/swap.h

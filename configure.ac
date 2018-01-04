@@ -3,7 +3,7 @@
 
 AC_PREREQ([2.69])
 AC_INIT([hello-autoconf], [1.0.0], [wansong@sina.cn])
-AC_CONFIG_SRCDIR([src/hello_autoconf/main.cc])
+AC_CONFIG_SRCDIR([src/hello_autoconf/utils/swap.cc])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([foreign subdir-objects -Wall -Werror])
 
@@ -24,6 +24,8 @@ AC_CHECK_LIB([pthread], [pthread_rwlock_init])
 
 AC_CONFIG_FILES([Makefile
   src/Makefile
+  src/hello_autoconf/demo/Makefile
+  src/hello_autoconf/utils/Makefile
   src/hello_autoconf/Makefile])
 
 AC_OUTPUT
