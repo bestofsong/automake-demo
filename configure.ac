@@ -7,6 +7,8 @@ AC_CONFIG_SRCDIR([src/hello_autoconf/utils/swap.cc])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([foreign subdir-objects -Wall -Werror])
 
+LT_INIT
+
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_CC
