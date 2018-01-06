@@ -35,8 +35,8 @@ do_build() {
   export CXXFLAGS="${HOST_FLAGS} ${OPT_FLAGS}"
   export LDFLAGS="${HOST_FLAGS}"
 
-  ${CONFIGURE} --host=${CHOST} --prefix=${PREFIX} --enable-static --disable-shared
-  make && make install
+  "${CONFIGURE}" --host=${CHOST} --prefix=${PREFIX} --enable-static --disable-shared
+  make && make install && make clean
 }
 
 do_collect_lib() {
@@ -49,7 +49,24 @@ do_collect_lib() {
 }
 
 do_lipo() {
-  echo ""
+  for mod in `ls "${LIPO_INPUT_DIR}"` ; do
+    lipo_mod_dir=${LIPO_INPUT_DIR}/${mod}
+    output_mod_dir=${LIPO_OUTPUT_DIR}/${mod}
+    [ -d "${output_mod_dir}" ] || mkdir -p "${output_mod_dir}"
+
+    arch_dir_names=(`ls "${lipo_mod_dir}"`)
+    any_arch=${arch_dir_names[1]}
+    libs=`find "${lipo_mod_dir}/$any_arch" -name "*.a"`
+
+    for lib in $libs ; do
+      lib_name=`basename "${lib}"`
+      input_list=""
+      for arch in ${arch_dir_names[*]} ; do
+        input_list="${input_list} ${lipo_mod_dir}/${arch}/${lib_name}"
+      done
+      lipo -create -output "${output_mod_dir}/${lib_name}" $input_list
+    done
+  done
 }
 
 calc_cross_compile_flags() {
@@ -63,7 +80,7 @@ SDK_ARCH_HOSTS2=(iphoneos arm64 arm-apple-darwin)
 SDK_ARCH_HOSTS3=(iphonesimulator i386 i386-apple-darwin)
 SDK_ARCH_HOSTS4=(iphonesimulator x86_64 x86_64-apple-darwin)
 
-cd ${BUILD_DIR}
+cd "${BUILD_DIR}"
 
 for ii in 0 1 2 3 4 ; do
   eval SDK=\${SDK_ARCH_HOSTS${ii}[0]}
@@ -73,4 +90,5 @@ for ii in 0 1 2 3 4 ; do
   do_build
   do_collect_lib
 done
+do_lipo
 
