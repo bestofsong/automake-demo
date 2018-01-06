@@ -12,7 +12,7 @@ PROJ_ROOT=`dirname "${script_dir}"`
 BUILD_DIR=${PROJ_ROOT}/build
 CONFIGURE=${PROJ_ROOT}/configure
 
-dobuild() {
+do_build() {
   export CC="$(xcrun -find -sdk ${SDK} cc)"
   export CXX="$(xcrun -find -sdk ${SDK} cxx)"
   export CPP="$(xcrun -find -sdk ${SDK} cpp)"
@@ -25,12 +25,33 @@ dobuild() {
   make && make install
 }
 
+do_collect_lib() {
+  echo ""
+}
+
+do_lipo() {
+  echo ""
+}
+
+calc_cross_compile_flags() {
+  echo "-arch ${ARCH} -miphoneos-version-min=8.0 -isysroot `xcrun -sdk ${SDK} --show-sdk-path`"
+}
+
+
+SDK_ARCH_HOSTS0=(iphoneos armv7 arm-apple-darwin)
+SDK_ARCH_HOSTS1=(iphoneos armv7s arm-apple-darwin)
+SDK_ARCH_HOSTS2=(iphoneos arm64 arm-apple-darwin)
+SDK_ARCH_HOSTS3=(iphonesimulator i386 i386-apple-darwin)
+SDK_ARCH_HOSTS4=(iphonesimulator x86_64 x86_64-apple-darwin)
+
 cd ${BUILD_DIR}
 
-SDK="iphoneos"
-ARCH_FLAGS="-arch arm64"
-HOST_FLAGS="${ARCH_FLAGS} -miphoneos-version-min=8.0 -isysroot `xcrun -sdk ${SDK} --show-sdk-path`"
-CHOST="arm-apple-darwin"
-PREFIX=$BUILD_DIR
-dobuild
+for ii in 0 1 2 3 4 ; do
+  eval SDK=\${SDK_ARCH_HOSTS${ii}[0]}
+  eval ARCH=\${SDK_ARCH_HOSTS${ii}[1]}
+  eval CHOST=\${SDK_ARCH_HOSTS${ii}[2]}
+  HOST_FLAGS=`calc_cross_compile_flags`
+  PREFIX=$BUILD_DIR
+  do_build
+done
 
