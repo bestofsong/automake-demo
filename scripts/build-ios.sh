@@ -1,4 +1,11 @@
-#! /bin/sh
+#! /usr/bin/env bash
+
+# This script can be used to generate fat static libraries for ios from any c/c++ build system
+# The output flat libraries of lipo is in PREFIX/lipo/output
+#
+# Requirements for build system: configure at PROJ_ROOT
+# Requirements for placement of this script: PROJ_ROOT/<any script dir name>/<any script file name>
+#
 
 set -e
 
